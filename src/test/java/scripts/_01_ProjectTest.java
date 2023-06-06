@@ -66,7 +66,7 @@ public class _01_ProjectTest extends Base{
 
             for (int i = 0; i < expectedText.length; i++) {
                 Assert.assertEquals(genderButtonsExist.get(i).getText(), expectedText[i]);
-                Assert.assertTrue(genderButtonsExist.get(i).isEnabled());
+                Assert.assertTrue(genderButtonsExist.get(i).isEnabled()); // clickable
                 Assert.assertFalse(genderButtonsSelected.get(i).isSelected());
 
             }
@@ -168,7 +168,7 @@ public class _01_ProjectTest extends Base{
             WebElement consentInput = driver.findElement(By.cssSelector("input[type='checkbox']"));
             Assert.assertEquals(consentInput.getAttribute("required"), "true");
 
-            Assert.assertTrue(consentInput.isEnabled());  // label or input?
+            Assert.assertTrue(consentInput.isEnabled());  // input
             consentInput.click();
             Assert.assertTrue(consentInput.isSelected());
             Waiter.pause(3);
@@ -188,7 +188,7 @@ public class _01_ProjectTest extends Base{
     }
 
     //-------------------------Test Case 10-----------------------
-    @Test
+    @Test(priority = 10)
     public void validateFormSubmission(){
         WebElement fullNameInputBoxDisplay = driver.findElement(By.xpath("(//div[@class='control'])[1]/input"));
         fullNameInputBoxDisplay.sendKeys("John Doe");
